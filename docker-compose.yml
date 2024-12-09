@@ -4,12 +4,12 @@ services:
       context: .
     image: django-chatapp-image
     container_name: django-chatapp
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:9000
     volumes:
       - ./:/app
       - /virtual-env
     ports:
-      - 8000:8000
+      - 9000:9000
     environment:
       - SOME_KEY=SOME_VAL
     depends_on:
