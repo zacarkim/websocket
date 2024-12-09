@@ -1,0 +1,23 @@
+services:
+  django:
+    build:
+      context: .
+    image: django-chatapp-image
+    container_name: django-chatapp
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./:/app
+      - /virtual-env
+    ports:
+      - 8000:8000
+    environment:
+      - SOME_KEY=SOME_VAL
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redisdata:/data
